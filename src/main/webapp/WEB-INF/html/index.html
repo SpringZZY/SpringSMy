@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script type="text/javascript" language="javascript" src="/SpringSMy/StaticResources/js/index.js" charset="UTF-8"></script> 
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="/SpringSMy/StaticResources/bootstop/jquery-1.11.1.js"></script>
+	<link rel="stylesheet" type="text/css" href="/SpringSMy/StaticResources/bootstop/bootstrap.min.css">
+    <script src="/SpringSMy/StaticResources/bootstop/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/SpringSMy/StaticResources/css/IndexCss.css" type="text/css" />
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body ng-app="AddUser" ng-controller="uerController">
+<div>
+	<div>
+		<p>AngualerJs经典Form表单应用</p>
+	</div>
+	<div>
+		<form name = "UserForm" ng-submit = "processForm()" novalidate="novalidate">
+		学号：<input type="text" ng-model = "AddUser.UserId" name ="UserId">
+		姓名：<input type="text" ng-model = "AddUser.UserName" name ="UserName">
+		学生Start:<input type="text" ng-model = "AddUser.UserStart" name ="UserStart">
+        <button type="submit">提交</button>
+		</form>
+	</div>
+	<pre>{{AddUser}}</pre>
+</div>
+	
+<br>
+	<!-- Table布局 -->
+	<div class = "SelectTable" >
+		<table>
+			<tr>
+				<td class = "row_width">学号</td>
+				<td class = "row_width">姓名</td>
+				<td class = "row_width">学生Start</td>
+				<td class = "row_width">修改</td>
+				<td class = "row_width">删除</td>
+			</tr>
+			<tr ng-repeat="a in array">
+				<td>{{a.id}}</td>
+				<td>{{a.nickname}}</td>
+				<td>{{a.state}}</td>
+				<td><input type = "button" value = "修改" ng-click="ShowHide()"></td>
+				<td><input type = "button" value = "删除" ng-click="Delete()"></td>
+			</tr>
+		</table>
+	</div>
+	
+<nav>
+  <ul class="pagination">
+    <li><a href="#" ng-click = "ListPage('fristPage')" id = "fristPage">首頁</a></li>
+    <li><a href="#" ng-click = "UpPage()">&laquo;</a></li>
+    
+     <li ng-repeat="page in pageList"  ><!-- ng-class="{true:'active'}[p_current==page]" ng-class="{true:'active'}" -->
+       		<a href="#" ng-click="AppointPage()" value = {{page}} id = "A{{page}}">{{page}}</a>
+     </li>
+     
+     <!-- 分页最后一点尾巴，点击页数 查询。 AppointPage()方法没有写完-->
+        
+   	<li><a href="#"  ng-click = "DownPage()">&raquo;</a></li>
+    <li><a href="#"  ng-click = "ListPage()">尾頁</a></li>							   
+    <li><span>共:{{count}}条</span></li>
+  </ul>
+</nav>
+<!-- 
+   页数总数 {{page}}    <br/>
+   显示条数 {{pageData.pageSize}}    <br/>
+   第几页  {{pageData.pageNo}}
+ -->
+
+	<!-- DIV布局 -->
+	<div id = "UpUser" class="col-lg-2 ng-hide" ng-show ="selectView" >
+		<form ng-submit = "UpdateSubmit()">
+			<div class="form-group" >
+				<label>学号</label>
+				<input type = "text" ng-model = "UpselectData.UpId"  class="form-control">			
+			</div>
+			<div class="form-group" >
+				<label>姓名</label>
+				<input type = "text" ng-model = "UpselectData.UpName"  class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Start</label>
+				<input type = "text" ng-model = "UpselectData.UpStart" class="form-control">
+			</div>
+			<div class="form-group">
+				<input type = "submit" value = "OK">
+				<input type = "button"  value = "Close" ng-click="UpClose()" >
+			</div>
+		</form>
+	</div>
+
+
+
+
+
+
+</body>
+ <script type="text/javascript" language="javascript" src="/SpringSMy/StaticResources/js/indexAngualerjs.js" charset="UTF-8">
+ 
+ </script>
+</html>

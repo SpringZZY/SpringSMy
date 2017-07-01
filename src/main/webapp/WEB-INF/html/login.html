@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<link rel="stylesheet" href="/SpringSMy/StaticResources/css/login.css" type="text/css" />
+<script type="text/javascript" language="javascript" src="/SpringSMy/StaticResources/js/login.js" charset="UTF-8"></script> 
+<meta charset="UTF-8">
+<title>Login Page</title>
+</head>
+<body ng-app="loginApp" ng-controller="loginController" >
+	<div class = "loginClass">
+	<form class="form-horizontal" ng-submit="submitLogins(UserData)" novalidate="novalidate" >
+	   <div class="control-group">
+			<label class="control-label" ><span>Name:</span></label>
+			<input type = "text" placeholder="账号" id = "Name" ng-model="UserData.userName" >
+	   </div>
+	   <div class="control-group">
+    		<label class="control-label" for="inputPassword"><span>Password</span></label>
+        	<input type="password" id="inputPassword" placeholder="Password" ng-model = "UserData.Password" >
+       </div>
+       <div class="control-group">
+      	 	<div class="controls">
+     	 	<label class="checkbox">
+        	<span> Remember me</span><input type="checkbox" class = "checkboxs">
+         	</label>
+      	 	<button type="submit" class="btn">Sign in</button>
+    		</div>
+ 	  </div>
+	</form>
+	</div>
+	<!-- <div>
+	<input type = "text" placeholder="账号" id = "Name" ng-model="${pd}" >
+	${pd}</div> -->
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.dao.ssmDao">
+<!-- 	<insert id="insertUserDao" parameterType="ssmBean" keyProperty="id">
+		insert into zzy_user(
+		state,
+		nickname,id)
+		values
+		(
+		#{ssmState},
+		#{ssmName},
+		#{id})
+	</insert>
+	
+	<select id="selectDao" resultType="ssmBean">
+		select * from zzy_user
+	</select> -->
+
+	<resultMap type="com.cn.pojo.ssmBean" id="ssmBeanResult">
+		<result property="id" column="id"/>
+		<result property="state" column="state"/>
+		<result property="nickname" column="nickname"/>
+	</resultMap>
+	
+	<insert id="insertUserDao" parameterType="com.cn.pojo.ssmBean" keyProperty="id">
+		insert into zzy_user(
+		state,
+		nickname,id)
+		values
+		(
+		#{state},
+		#{nickname},
+		#{id})
+	</insert>
+	
+	<select id="selectDao"  resultType="com.cn.pojo.ssmBean" parameterType="java.util.HashMap">
+		<!-- select * from(select a.*,ROWNUM from(select * from zzy_user) 
+			a where <![CDATA[ ROWNUM <= ]]>(#{pageNo,jdbcType=INTEGER} + #{pageSize,jdbcType=INTEGER}))
+				 where<![CDATA[ ROWNUM >]]>  #{pageNo,jdbcType=INTEGER} 
+				  -->
+	SELECT *
+
+  		FROM (SELECT a.*, ROWNUM as rn
+
+          FROM (SELECT *
+
+                  FROM zzy_user) a
+
+         WHERE  ROWNUM <![CDATA[ <=  ]]>#{EndPage})<!-- 结束条数 -->
+
+	 WHERE rn <![CDATA[ >= ]]>#{StartPage}<!-- 开始条数 -->
+	</select>
+	
+	<select id="pageCount" resultType="int">
+		select count(*)as count from (select * from zzy_user)
+	</select>
+	
+	
+	<update id="UpdateUserDao"  parameterType="java.util.HashMap" >
+		update zzy_user
+		set
+			<if test="UpId != null "> id = #{UpId},</if>
+			<if test="UpStart != null">state = #{UpStart},</if>
+			<if test="UpName != null">nickname =#{UpName}</if>
+		<where>
+			id = #{UserId}
+		</where>
+	</update>
+	
+	<delete id="DeletUserDao" parameterType="java.lang.Integer">
+		delete  from zzy_user where id = #{Id}
+	</delete>
+</mapper>

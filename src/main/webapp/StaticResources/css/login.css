@@ -1,0 +1,59 @@
+body {
+		 background : url(/SpringSMy/StaticResources/img/cj012.php.jpg); 
+		 background-repeat:repeat-y;
+		 background-repeat:repeat-x;
+		 /*  position: absolute;	图片居中显示*/
+  		/*  border  : 2px solid #ffffff; */
+		 position: absolute;	/* 绝对定位 */
+  		 left: 80px;
+  		 top: 380px;
+  		  
+     }
+
+.loginClass
+	 {
+		/*  border  : 2px solid #ffffff; */
+		 height  : 100px;
+		 width   : 300px;
+	 }
+	 
+.control-group
+	 {
+	 	 width   : 280px;
+	 	 margin  : 5px;
+	 	 padding : 2px;
+	 }
+	 
+#Name{
+		 border  : 0.5px solid #00ff00;
+		 float   : right;
+		 border-radius : 4px;
+		 /* 输入框设置成透明 样式 
+		 background-color: transparent;*/
+	 } 
+	 
+#inputPassword
+	 {
+	 	 border  : 0.5px solid #00ff00;
+		 float   : right;
+	 	 border-radius : 4px;
+	 	  /* 输入框设置成透明 样式 
+		 background-color: transparent;*/
+	 }
+	 
+span {
+		 color   : #ffffff;
+		 font-weight : bold;
+	 }
+	 
+.btn {
+		position : relative;
+  		left     : 80px;
+	 }
+	 
+.checkboxs
+	 {
+	 	position : relative;
+  		left     : 20px;
+  		top 	 : 5px;
+	 }

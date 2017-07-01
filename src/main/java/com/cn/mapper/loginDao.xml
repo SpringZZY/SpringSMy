@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.dao.loginDao">
+	<resultMap type="com.cn.pojo.LoginBean" id="LoginResult">
+		<result property="wdName" column="wdName" jdbcType="VARCHAR"/>
+		<result property="password" column="password" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id ="password">
+		wdName,password
+	</sql>
+	<select id="LoginDao" parameterType="com.cn.pojo.LoginBean" resultMap="LoginResult">
+		select * from password
+		where
+		wdName =
+		#{wdName,jdbcType=VARCHAR}
+		and
+		password =
+		#{password,jdbcType=VARCHAR}
+	</select>
+	<!-- <resultMap type="ssm.com.bean.LoginBean" id="LoginResult"> <result 
+		property="wdName" column="wdName"/> <result property="password" column="password"/> 
+		</resultMap> <sql> wdName,password </sql> <select id="LoginDao" parameterType="spring" 
+		resultMap="LoginResult"> select * from password where wdName = #{wdName} 
+		and password = #{password} </select> -->
+</mapper>
